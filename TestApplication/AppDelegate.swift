@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CleverTapSDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        CleverTap.autoIntegrate()
+        CleverTap.setDebugLevel(CleverTapLogLevel.debug.rawValue)
+        
+        
+        // To set a multi-value property
+       // CleverTap.sharedInstance()?.profileSetMultiValues(["iOS 1 bag", "iOS 2 shoes"], forKey: "myStuff")
+        
+        // To add an additional value(s) to a multi-value property
+        CleverTap.sharedInstance()?.profileAddMultiValues(["iOS 999 bag", "iOS 1000 shoes"], forKey: "myStuff")
+        
+        
+        // each of the below mentioned fields are optional
+        // if set, these populate demographic information in the Dashboard
+       
+        let profile: Dictionary<String, AnyObject> = [
+            "Name": "Palash Jain" as AnyObject,
+            "Identity": 91026032 as AnyObject,
+            "Email": "jack123456@gmail.com" as AnyObject
+        ]
+        
+        CleverTap.sharedInstance()?.profilePush(profile)
+        
+        
+        
+        
+        
         return true
     }
 
