@@ -27,8 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // To add an additional value(s) to a multi-value property
         CleverTap.sharedInstance()?.profileAddMultiValues(["iOS 999 bag", "iOS 1000 shoes"], forKey: "myStuff")
+                // To add an additional value(s) to a multi-value property
         
-        
+        // To add an additional value(s) to a multi-value property
         // each of the below mentioned fields are optional
         // if set, these populate demographic information in the Dashboard
        
