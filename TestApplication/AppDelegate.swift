@@ -21,30 +21,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         CleverTap.autoIntegrate()
         CleverTap.setDebugLevel(CleverTapLogLevel.debug.rawValue)
         
-        
-        // To set a multi-value property
-       // CleverTap.sharedInstance()?.profileSetMultiValues(["iOS 1 bag", "iOS 2 shoes"], forKey: "myStuff")
-        
-        // To add an additional value(s) to a multi-value property
-        CleverTap.sharedInstance()?.profileAddMultiValues(["iOS 999 bag", "iOS 1000 shoes"], forKey: "myStuff")
-                // To add an additional value(s) to a multi-value property
-        
-        // To add an additional value(s) to a multi-value property
-        // each of the below mentioned fields are optional
-        // if set, these populate demographic information in the Dashboard
-       
         let profile: Dictionary<String, AnyObject> = [
-            "Name": "Palash Jain" as AnyObject,
-            "Identity": 91026032 as AnyObject,
-            "Email": "jack123456@gmail.com" as AnyObject
+            "Customer_Type": "SUBSCRIBER" as AnyObject,
+            "Email": "deep+c3@makkajai.com" as AnyObject
         ]
-        
+
         CleverTap.sharedInstance()?.profilePush(profile)
-        
-        
-        
-        
-        
+        if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad) {
+            CleverTap.sharedInstance()?.profileAddMultiValue("MonsterMath - ipad", forKey: "Apps")
+        } else {
+            CleverTap.sharedInstance()?.profileAddMultiValue("MonsterMath - iPhone", forKey: "Apps")
+        }
         return true
     }
 
